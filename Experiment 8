@@ -1,0 +1,99 @@
+a) Operator Overloading '+' for String Concatenation
+#include <iostream>
+#include <string>
+using namespace std;
+
+class AddString {
+    string str;
+public:
+    void getData() {
+        cout << "Enter string: ";
+        getline(cin, str);
+    }
+    AddString operator +(AddString &s) {
+        AddString temp;
+        temp.str = str + s.str;
+        return temp;
+    }
+    void display() {
+        cout << "Concatenated String: " << str << endl;
+    }
+};
+
+int main() {
+    AddString s1, s2, s3;
+    cout << "Enter first string:\n";
+    s1.getData();
+    cout << "Enter second string:\n";
+    s2.getData();
+    s3 = s1 + s2;
+    s3.display();
+    return 0;
+}
+
+b) Virtual Function - ILogin Base Class with Derived Classes
+#include <iostream>
+using namespace std;
+
+class ILogin {
+protected:
+    string name, password;
+public:
+    virtual void accept() {
+        cout << "Enter Name: ";
+        getline(cin, name);
+        cout << "Enter Password: ";
+        getline(cin, password);
+    }
+    virtual void display() {
+        cout << "Name: " << name << "\nPassword: " << password << endl;
+    }
+};
+
+class EmailLogin : public ILogin {
+    string email;
+public:
+    void accept() override {
+        cout << "Enter Email ID: ";
+        getline(cin, email);
+        cout << "Enter Password: ";
+        getline(cin, password);
+    }
+    void display() override {
+        cout << "\n--- Email Login Details ---\n";
+        cout << "Email ID: " << email << "\nPassword: " << password << endl;
+    }
+};
+
+class MembershipLogin : public ILogin {
+    int memberID;
+public:
+    void accept() override {
+        cout << "Enter Member Name: ";
+        getline(cin, name);
+        cout << "Enter Member ID: ";
+        cin >> memberID;
+        cin.ignore();
+        cout << "Enter Password: ";
+        getline(cin, password);
+    }
+    void display() override {
+        cout << "\n--- Membership Login Details ---\n";
+        cout << "Name: " << name << "\nMember ID: " << memberID << "\nPassword: " << password << endl;
+    }
+};
+
+int main() {
+    EmailLogin e;
+    MembershipLogin m;
+
+    cout << "Enter Email Login Details:\n";
+    e.accept();
+    cout << "\nEnter Membership Login Details:\n";
+    m.accept();
+
+    e.display();
+    m.display();
+    return 0;
+}
+
