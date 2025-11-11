@@ -1,0 +1,135 @@
+a) Function Template to find Sum of Array elements
+#include <iostream>
+using namespace std;
+
+template <class T>
+T sumArray(T arr[], int n) {
+    T sum = 0;
+    for (int i = 0; i < n; i++)
+        sum += arr[i];
+    return sum;
+}
+
+int main() {
+    int arr1[5] = {1, 2, 3, 4, 5};
+    float arr2[5] = {1.1, 2.2, 3.3, 4.4, 5.5};
+    double arr3[5] = {1.11, 2.22, 3.33, 4.44, 5.55};
+
+    cout << "Sum (int): " << sumArray(arr1, 5) << endl;
+    cout << "Sum (float): " << sumArray(arr2, 5) << endl;
+    cout << "Sum (double): " << sumArray(arr3, 5) << endl;
+    return 0;
+}
+
+b) Function Template with Specialization for Square
+#include <iostream>
+#include <string>
+using namespace std;
+
+template <class T>
+T square(T num) {
+    return num * num;
+}
+
+template <>
+string square<string>(string s) {
+    return s + s;
+}
+
+int main() {
+    int x = 5;
+    string str = "Hello";
+
+    cout << "Square of integer: " << square(x) << endl;
+    cout << "Square of string: " << square(str) << endl;
+    return 0;
+}
+
+c) Class Template - Simple Calculator
+#include <iostream>
+using namespace std;
+
+template <class T>
+class Calculator {
+    T a, b;
+public:
+    Calculator(T x, T y) {
+        a = x;
+        b = y;
+    }
+    void add() { cout << "Addition: " << a + b << endl; }
+    void sub() { cout << "Subtraction: " << a - b << endl; }
+    void mul() { cout << "Multiplication: " << a * b << endl; }
+    void div() { cout << "Division: " << a / b << endl; }
+};
+
+int main() {
+    Calculator<int> c1(10, 5);
+    Calculator<float> c2(10.5, 5.2);
+
+    cout << "--- Integer Calculator ---" << endl;
+    c1.add(); c1.sub(); c1.mul(); c1.div();
+
+    cout << "\n--- Float Calculator ---" << endl;
+    c2.add(); c2.sub(); c2.mul(); c2.div();
+
+    return 0;
+}
+
+d) Class Template - Stack with Push and Pop
+#include <iostream>
+using namespace std;
+
+template <class T>
+class Stack {
+    T stack[10];
+    int top;
+public:
+    Stack() { top = -1; }
+
+    void push(T val) {
+        if (top == 9)
+            cout << "Stack Overflow" << endl;
+        else
+            stack[++top] = val;
+    }
+
+    void pop() {
+        if (top == -1)
+            cout << "Stack Underflow" << endl;
+        else
+            cout << "Popped: " << stack[top--] << endl;
+    }
+
+    void display() {
+        if (top == -1)
+            cout << "Stack is empty" << endl;
+        else {
+            cout << "Stack elements: ";
+            for (int i = 0; i <= top; i++)
+                cout << stack[i] << " ";
+            cout << endl;
+        }
+    }
+};
+
+int main() {
+    Stack<int> s1;
+    s1.push(10);
+    s1.push(20);
+    s1.push(30);
+    s1.display();
+    s1.pop();
+    s1.display();
+
+    Stack<string> s2;
+    s2.push("Hello");
+    s2.push("World");
+    s2.display();
+    s2.pop();
+    s2.display();
+
+    return 0;
+}
+
+
