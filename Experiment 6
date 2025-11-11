@@ -1,0 +1,196 @@
+a) Multilevel Inheritance
+#include <iostream>
+using namespace std;
+
+class Person {
+protected:
+    string name;
+public:
+    void getPerson() {
+        cout << "Enter name: ";
+        getline(cin, name);
+    }
+};
+
+class Student : public Person {
+protected:
+    int roll_no;
+public:
+    void getStudent() {
+        cout << "Enter roll number: ";
+        cin >> roll_no;
+        cin.ignore();
+    }
+};
+
+class Result : public Student {
+    float marks;
+public:
+    void getResult() {
+        cout << "Enter marks: ";
+        cin >> marks;
+    }
+    void display() {
+        cout << "\nName: " << name << "\nRoll No: " << roll_no << "\nMarks: " << marks << endl;
+    }
+};
+
+int main() {
+    Result r;
+    r.getPerson();
+    r.getStudent();
+    r.getResult();
+    r.display();
+    return 0;
+}
+
+b) Multiple Inheritance
+#include <iostream>
+using namespace std;
+
+class Sports {
+protected:
+    int sportMarks;
+public:
+    void getSports() {
+        cout << "Enter sports marks: ";
+        cin >> sportMarks;
+    }
+};
+
+class Academics {
+protected:
+    int academicMarks;
+public:
+    void getAcademics() {
+        cout << "Enter academic marks: ";
+        cin >> academicMarks;
+    }
+};
+
+class Student : public Sports, public Academics {
+public:
+    void display() {
+        cout << "\nTotal Marks: " << (sportMarks + academicMarks) << endl;
+    }
+};
+
+int main() {
+    Student s;
+    s.getSports();
+    s.getAcademics();
+    s.display();
+    return 0;
+}
+
+c) Hierarchical Inheritance
+#include <iostream>
+using namespace std;
+
+class Person {
+protected:
+    string name;
+public:
+    void getName() {
+        cout << "Enter name: ";
+        getline(cin, name);
+    }
+};
+
+class Student : public Person {
+    int roll_no;
+public:
+    void getStudent() {
+        cout << "Enter roll number: ";
+        cin >> roll_no;
+        cin.ignore();
+    }
+    void display() {
+        cout << "\nStudent Name: " << name << "\nRoll No: " << roll_no << endl;
+    }
+};
+
+class Teacher : public Person {
+    string subject;
+public:
+    void getTeacher() {
+        cout << "Enter subject: ";
+        getline(cin, subject);
+    }
+    void display() {
+        cout << "\nTeacher Name: " << name << "\nSubject: " << subject << endl;
+    }
+};
+
+int main() {
+    Student s;
+    Teacher t;
+    cout << "Enter Student Details:\n";
+    s.getName();
+    s.getStudent();
+    cout << "Enter Teacher Details:\n";
+    t.getName();
+    t.getTeacher();
+    s.display();
+    t.display();
+    return 0;
+}
+
+d) Hybrid Inheritance
+#include <iostream>
+using namespace std;
+
+class Person {
+protected:
+    string name;
+public:
+    void getName() {
+        cout << "Enter name: ";
+        getline(cin, name);
+    }
+};
+
+class Employee : public Person {
+protected:
+    int empID;
+public:
+    void getEmployee() {
+        cout << "Enter Employee ID: ";
+        cin >> empID;
+        cin.ignore();
+    }
+};
+
+class Department {
+protected:
+    string deptName;
+public:
+    void getDepartment() {
+        cout << "Enter Department Name: ";
+        getline(cin, deptName);
+    }
+};
+
+class Manager : public Employee, public Department {
+    float salary;
+public:
+    void getManager() {
+        cout << "Enter Salary: ";
+        cin >> salary;
+    }
+    void display() {
+        cout << "\nManager Details:\n";
+        cout << "Name: " << name << "\nEmployee ID: " << empID << "\nDepartment: " << deptName << "\nSalary: " << salary << endl;
+    }
+};
+
+int main() {
+    Manager m;
+    m.getName();
+    m.getEmployee();
+    m.getDepartment();
+    m.getManager();
+    m.display();
+    return 0;
+}
+
