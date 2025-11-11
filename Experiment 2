@@ -1,0 +1,116 @@
+a):-
+#include <iostream>
+using namespace std;
+
+class City {
+    string name;
+    long population;
+
+public:
+    void accept() {
+        cin.ignore();
+        cout << "Enter city name: ";
+        getline(cin, name);
+        cout << "Enter population: ";
+        cin >> population;
+    }
+
+    long getPopulation() { return population; }
+    string getName() { return name; }
+};
+
+int main() {
+    City c[5];
+    for (int i = 0; i < 5; i++) {
+        cout << "\nEnter details for city " << i + 1 << ":\n";
+        c[i].accept();
+    }
+
+    int maxIndex = 0;
+    for (int i = 1; i < 5; i++) {
+        if (c[i].getPopulation() > c[maxIndex].getPopulation())
+            maxIndex = i;
+    }
+
+    cout << "\nCity with highest population: " << c[maxIndex].getName() << endl;
+    return 0;
+}
+
+b):-
+#include <iostream>
+using namespace std;
+
+class Account {
+    int acc_no;
+    float balance;
+
+public:
+    void accept() {
+        cout << "Enter Account Number: ";
+        cin >> acc_no;
+        cout << "Enter Balance: ";
+        cin >> balance;
+    }
+
+    void addInterest() {
+        if (balance >= 5000)
+            balance += balance * 0.10;
+    }
+
+    void display() {
+        cout << "Account No: " << acc_no << "  Balance: " << balance << endl;
+    }
+};
+
+int main() {
+    Account a[10];
+    for (int i = 0; i < 10; i++) {
+        cout << "\nEnter details for Account " << i + 1 << ":\n";
+        a[i].accept();
+        a[i].addInterest();
+    }
+
+    cout << "\nAccounts after adding interest:\n";
+    for (int i = 0; i < 10; i++)
+        a[i].display();
+
+    return 0;
+}
+
+c):-
+#include <iostream>
+using namespace std;
+
+class Staff {
+    string name;
+    string post;
+
+public:
+    void accept() {
+        cin.ignore();
+        cout << "Enter Staff Name: ";
+        getline(cin, name);
+        cout << "Enter Post: ";
+        getline(cin, post);
+    }
+
+    string getPost() { return post; }
+    string getName() { return name; }
+};
+
+int main() {
+    Staff s[5];
+    for (int i = 0; i < 5; i++) {
+        cout << "\nEnter details for Staff " << i + 1 << ":\n";
+        s[i].accept();
+    }
+
+    cout << "\nStaff with post 'HOD':\n";
+    for (int i = 0; i < 5; i++) {
+        if (s[i].getPost() == "HOD" || s[i].getPost() == "hod" || s[i].getPost() == "Hod")
+            cout << s[i].getName() << endl;
+    }
+
+    return 0;
+}
+
