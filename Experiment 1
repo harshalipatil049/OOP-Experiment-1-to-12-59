@@ -1,0 +1,111 @@
+a):-
+#include <iostream>
+using namespace std;
+
+class Student {
+    int roll_no;
+    string name;
+    string student_class;
+
+public:
+    void accept() {
+        cout << "Enter Roll Number: ";
+        cin >> roll_no;
+        cin.ignore(); // to clear input buffer
+        cout << "Enter Name: ";
+        getline(cin, name);
+        cout << "Enter Class: ";
+        getline(cin, student_class);
+    }
+
+    void display() {
+        cout << "\nStudent Details:\n";
+        cout << "Roll No: " << roll_no << endl;
+        cout << "Name: " << name << endl;
+        cout << "Class: " << student_class << endl;
+    }
+};
+
+int main() {
+    Student s1;
+    s1.accept();
+    s1.display();
+    return 0;
+}
+
+b):-
+#include <iostream>
+using namespace std;
+
+class Book {
+    string book_name;
+    float price;
+    int pages;
+
+public:
+    void accept() {
+        cin.ignore(); // clear buffer
+        cout << "Enter Book Name: ";
+        getline(cin, book_name);
+        cout << "Enter Price: ";
+        cin >> price;
+        cout << "Enter Number of Pages: ";
+        cin >> pages;
+    }
+
+    float getPrice() {
+        return price;
+    }
+
+    string getName() {
+        return book_name;
+    }
+};
+
+int main() {
+    Book b1, b2;
+    cout << "Enter details for Book 1:\n";
+    b1.accept();
+
+    cout << "\nEnter details for Book 2:\n";
+    b2.accept();
+
+    cout << "\nBook with higher price: ";
+    if (b1.getPrice() > b2.getPrice())
+        cout << b1.getName() << endl;
+    else if (b2.getPrice() > b1.getPrice())
+        cout << b2.getName() << endl;
+    else
+        cout << "Both books have the same price." << endl;
+
+    return 0;
+}
+
+c):-
+#include <iostream>
+using namespace std;
+
+class Time {
+    int hours, minutes, seconds;
+
+public:
+    void accept() {
+        cout << "Enter time in HH MM SS format: ";
+        cin >> hours >> minutes >> seconds;
+    }
+
+    int convertToSeconds() {
+        return (hours * 3600) + (minutes * 60) + seconds;
+    }
+
+    void display() {
+        cout << "Total time in seconds: " << convertToSeconds() << " seconds" << endl;
+    }
+};
+
+int main() {
+    Time t1;
+    t1.accept();
+    t1.display();
+    return 0;
+}
