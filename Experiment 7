@@ -1,0 +1,116 @@
+a) Function Overloading - Area of Laboratory (Rectangle) and Classroom (Square)
+#include <iostream>
+using namespace std;
+
+class Area {
+public:
+    void calculate(float side) {
+        cout << "Area of Classroom (Square): " << side * side << endl;
+    }
+    void calculate(float length, float breadth) {
+        cout << "Area of Laboratory (Rectangle): " << length * breadth << endl;
+    }
+};
+
+int main() {
+    Area a;
+    float side, length, breadth;
+    cout << "Enter side of classroom: ";
+    cin >> side;
+    cout << "Enter length and breadth of laboratory: ";
+    cin >> length >> breadth;
+    a.calculate(side);
+    a.calculate(length, breadth);
+    return 0;
+}
+
+b) Function Overloading - Sum of 5 floats and 10 integers
+#include <iostream>
+using namespace std;
+
+class Sum {
+public:
+    float calculate(float a, float b, float c, float d, float e) {
+        return a + b + c + d + e;
+    }
+
+    int calculate(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9, int a10) {
+        return a1 + a2 + a3 + a4 + a5 + a6 + a7 + a8 + a9 + a10;
+    }
+};
+
+int main() {
+    Sum s;
+    cout << "Sum of 5 float values: " << s.calculate(1.1f, 2.2f, 3.3f, 4.4f, 5.5f) << endl;
+    cout << "Sum of 10 integer values: " << s.calculate(1,2,3,4,5,6,7,8,9,10) << endl;
+    return 0;
+}
+
+c) Unary - Operator Overloading (Negation)
+#include <iostream>
+using namespace std;
+
+class Number {
+    int x;
+public:
+    void getData() {
+        cout << "Enter a number: ";
+        cin >> x;
+    }
+    void display() {
+        cout << "Value: " << x << endl;
+    }
+    void operator -() {
+        x = -x;
+    }
+};
+
+int main() {
+    Number n;
+    n.getData();
+    cout << "Before negation:\n";
+    n.display();
+    -n;
+    cout << "After negation:\n";
+    n.display();
+    return 0;
+}
+
+d) Unary ++ Operator Overloading (Pre and Post Increment)
+#include <iostream>
+using namespace std;
+
+class Number {
+    int x;
+public:
+    void getData() {
+        cout << "Enter a number: ";
+        cin >> x;
+    }
+    void display() {
+        cout << "Value: " << x << endl;
+    }
+    void operator ++() {
+        ++x;
+    }
+    void operator ++(int) {
+        x++;
+    }
+};
+
+int main() {
+    Number n;
+    n.getData();
+    cout << "\nOriginal Value:\n";
+    n.display();
+
+    ++n;
+    cout << "After Pre-Increment:\n";
+    n.display();
+
+    n++;
+    cout << "After Post-Increment:\n";
+    n.display();
+
+    return 0;
+}
