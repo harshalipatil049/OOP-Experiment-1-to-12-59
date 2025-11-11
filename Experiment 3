@@ -1,0 +1,101 @@
+a) Pointer to object :-
+#include <iostream>
+using namespace std;
+
+class Book {
+    string title;
+    string author;
+    float price;
+
+public:
+    void accept() {
+        cin.ignore();
+        cout << "Enter Book Title: ";
+        getline(cin, title);
+        cout << "Enter Author Name: ";
+        getline(cin, author);
+        cout << "Enter Price: ";
+        cin >> price;
+    }
+
+    void display() {
+        cout << "\nBook Details:\n";
+        cout << "Title: " << title << endl;
+        cout << "Author: " << author << endl;
+        cout << "Price: " << price << endl;
+    }
+};
+
+int main() {
+    Book *ptr = new Book;
+    ptr->accept();
+    ptr->display();
+    delete ptr;
+    return 0;
+}
+
+b) Using 'this' pointer :-
+#include <iostream>
+using namespace std;
+
+class Student {
+    int roll_no;
+    float percentage;
+
+public:
+    void accept() {
+        cout << "Enter Roll Number: ";
+        cin >> this->roll_no;
+        cout << "Enter Percentage: ";
+        cin >> this->percentage;
+    }
+
+    void display() {
+        cout << "\nStudent Details:\n";
+        cout << "Roll No: " << this->roll_no << endl;
+        cout << "Percentage: " << this->percentage << "%" << endl;
+    }
+};
+
+int main() {
+    Student s;
+    s.accept();
+    s.display();
+    return 0;
+}
+
+c) Nested class :-
+#include <iostream>
+using namespace std;
+
+class University {
+public:
+    class Department {
+        string dept_name;
+
+    public:
+        void accept() {
+            cin.ignore();
+            cout << "Enter Department Name: ";
+            getline(cin, dept_name);
+        }
+        void display() {
+            cout << "Department: " << dept_name << endl;
+        }
+    };
+
+    void showInfo() {
+        Department d;
+        d.accept();
+        cout << "\nUniversity Details:\n";
+        d.display();
+    }
+};
+
+int main() {
+    University u;
+    u.showInfo();
+    return 0;
+}
+
+
