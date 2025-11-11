@@ -1,0 +1,122 @@
+a) Sum of numbers between 1 to n using constructor
+#include <iostream>
+using namespace std;
+
+class Sum {
+    int n, total;
+public:
+    Sum(int num) {
+        n = num;
+        total = 0;
+        for (int i = 1; i <= n; i++)
+            total += i;
+    }
+    void display() {
+        cout << "Sum of numbers from 1 to " << n << " = " << total << endl;
+    }
+};
+
+int main() {
+    int num;
+    cout << "Enter value of n: ";
+    cin >> num;
+    Sum s(num);
+    s.display();
+    return 0;
+}
+
+b) Constructor to initialize student data
+#include <iostream>
+using namespace std;
+
+class Student {
+    string name;
+    float percentage;
+public:
+    Student(string n, float p) {
+        name = n;
+        percentage = p;
+    }
+    void display() {
+        cout << "\nStudent Name: " << name << endl;
+        cout << "Percentage: " << percentage << "%" << endl;
+    }
+};
+
+int main() {
+    string n;
+    float p;
+    cout << "Enter Student Name: ";
+    getline(cin, n);
+    cout << "Enter Percentage: ";
+    cin >> p;
+    Student s(n, p);
+    s.display();
+    return 0;
+}
+
+c) Constructor with default value
+#include <iostream>
+using namespace std;
+
+class College {
+    int roll_no;
+    string name;
+    string course;
+public:
+    College(int r, string n, string c = "Computer Engineering") {
+        roll_no = r;
+        name = n;
+        course = c;
+    }
+    void display() {
+        cout << "\nRoll No: " << roll_no << endl;
+        cout << "Name: " << name << endl;
+        cout << "Course: " << course << endl;
+    }
+};
+
+int main() {
+    College c1(1, "Rahul");
+    College c2(2, "Sneha", "Mechanical Engineering");
+    c1.display();
+    c2.display();
+    return 0;
+}
+
+d) Constructor Overloading
+#include <iostream>
+using namespace std;
+
+class Rectangle {
+    int length, breadth;
+public:
+    Rectangle() {
+        length = 0;
+        breadth = 0;
+    }
+    Rectangle(int l) {
+        length = breadth = l;
+    }
+    Rectangle(int l, int b) {
+        length = l;
+        breadth = b;
+    }
+    void area() {
+        cout << "Area: " << (length * breadth) << endl;
+    }
+};
+
+int main() {
+    Rectangle r1;
+    Rectangle r2(5);
+    Rectangle r3(4, 6);
+    cout << "\nDefault Constructor: ";
+    r1.area();
+    cout << "Single Parameter Constructor: ";
+    r2.area();
+    cout << "Two Parameter Constructor: ";
+    r3.area();
+    return 0;
+}
+
