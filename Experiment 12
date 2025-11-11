@@ -1,0 +1,40 @@
+a) Implement Stack using STL
+#include <iostream>
+#include <stack>
+using namespace std;
+
+int main() {
+    stack<int> s;
+    s.push(10);
+    s.push(20);
+    s.push(30);
+
+    cout << "Stack elements (top to bottom): ";
+    while (!s.empty()) {
+        cout << s.top() << " ";
+        s.pop();
+    }
+    cout << endl;
+    return 0;
+}
+
+b) Implement Queue using STL
+#include <iostream>
+#include <queue>
+using namespace std;
+
+int main() {
+    queue<int> q;
+    q.push(10);
+    q.push(20);
+    q.push(30);
+
+    cout << "Queue elements (front to back): ";
+    while (!q.empty()) {
+        cout << q.front() << " ";
+        q.pop();
+    }
+    cout << endl;
+    return 0;
+}
+
